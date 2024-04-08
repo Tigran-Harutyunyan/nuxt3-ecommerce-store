@@ -3,7 +3,6 @@ import qs from "query-string";
 
 export default defineEventHandler(async (event) => {
 
-    const { auth } = event.context;
     const searchParams = await getQuery(event);
 
     const url = qs.stringifyUrl({
@@ -15,11 +14,6 @@ export default defineEventHandler(async (event) => {
             isFeatured: searchParams.isFeatured || undefined,
         },
     });
-
-    if (!auth.userId) {
-        setResponseStatus(event, 403)
-        return ''
-    }
 
     try {
         return await $fetch(url);
