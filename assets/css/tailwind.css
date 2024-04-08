@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
+html,
+body,
+:root {
+  height: 100%;
+}
+
+body > div:first-of-type {
+  height: 100%;
+}
+ 
+.font-poppins { 
+  font-family: Poppins;
+}
