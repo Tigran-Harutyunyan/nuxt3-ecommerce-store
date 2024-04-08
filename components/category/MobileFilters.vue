@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Button from "@/components/ui/Button.vue";
-import IconButton from "@/components/ui/IconButton.vue";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/ui/icon-button";
 import Filter from "@/components/category/Filter.vue";
 import { Plus, X } from "lucide-vue-next";
 import { Dialog, DialogPanel } from "@headlessui/vue";

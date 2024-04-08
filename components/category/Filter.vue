@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import qs from "query-string";
-import Button from "@/components/ui/Button.vue";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { Color, Size } from "@/types";
 

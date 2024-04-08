@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ShoppingBag } from "lucide-vue-next";
-import Button from "@/components/ui/Button.vue";
+import { Button } from "@/components/ui/button";
 import { useCart } from "@/store/cart";
 
 const cart = useCart();

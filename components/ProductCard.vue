@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import IconButton from "@/components/ui/IconButton.vue";
-import Currency from "@/components/ui/Currency.vue";
+import { IconButton } from "@/components/ui/icon-button";
+import Currency from "@/components/Currency.vue";
 
 import type { Product } from "@/types";
 import { Expand, ShoppingCart } from "lucide-vue-next";
