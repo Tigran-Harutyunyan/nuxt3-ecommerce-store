@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { UserButton, ClerkLoaded, SignedIn } from "vue-clerk";
 import MainNav from "@/components/MainNav.vue";
 import Container from "@/components/Container.vue";
 import NavbarActions from "@/components/NavbarActions.vue";
@@ -18,6 +19,22 @@ const { data: categories } = useFetch<Category[]>("/api/categories", {
         </NuxtLink>
         <MainNav :data="categories" />
         <NavbarActions />
+
+        <ClerkLoaded>
+          <div class="ml-2">
+            <SignedIn>
+              <UserButton
+                class="ml-2"
+                afterSignOutUrl="/"
+                :appearance="{
+                  elements: {
+                    avatarBox: 'h-[42px] w-[42px]',
+                  },
+                }"
+              />
+            </SignedIn>
+          </div>
+        </ClerkLoaded>
       </div>
     </Container>
   </div>
