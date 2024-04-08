@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import type { Product, Billboard as BillboardType } from "@/types";
 
-definePageMeta({
-  middleware: ["auth"],
-});
-
 const { data: billboards } = useFetch<BillboardType[]>("/api/billboards", {
   server: true,
 });

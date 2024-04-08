@@ -3,10 +3,6 @@ import type { Product, Category, Size, Color } from "@/types";
 import Filter from "@/components/category/Filter.vue";
 import MobileFilters from "@/components/category/MobileFilters.vue";
 
-definePageMeta({
-  middleware: ["auth"],
-});
-
 const routeParams = useRoute().params;
 
 const queryParams = computed(() => {
