@@ -1,42 +1,53 @@
 import { defineStore } from "pinia";
 import { type Product } from '@/types';
-import { toast } from 'vue-sonner';
+import { useToast } from "@/components/ui/toast/use-toast";
+
+const { toast } = useToast();
 
 export const useCart = defineStore("cart", () => {
   const items = ref<Product[]>([]);
+
+  const totalPrice = computed(() => {
+    if (!items.value) return 0;
+
+    return items.value.reduce((total, item) => {
+      return total + Number(item.price);
+    }, 0);
+  });
 
   const addItem = (data: Product) => {
     const existingItem = items.value.find((item) => item.id === data.id);
 
     if (existingItem) {
-      toast('Item already is in cart.');
+      toast({
+        title: 'Item already is in cart.',
+        variant: "default",
+      });
       return
     }
 
-    items.value = [...items.value, data]
-    toast.success('Item added to cart.');
+    items.value = [...items.value, data];
+    toast({
+      title: 'Item added to cart.',
+      variant: "default",
+    });
   }
 
   const removeItem = (id: string) => {
     items.value = items.value.filter((item) => item.id !== id)
-    toast.success('Item removed from cart.');
+    toast({
+      title: 'Item removed from cart.',
+      variant: "default",
+    });
   }
 
   const removeAll = () => {
     items.value = [];
   };
 
-  const loadFromStorage = () => {
-    items.value = [];
-  };
-
-  const saveToStorage = () => {
-    items.value = [];
-  };
-
-
   return {
     items,
+    totalPrice,
     addItem,
     removeItem,
     removeAll

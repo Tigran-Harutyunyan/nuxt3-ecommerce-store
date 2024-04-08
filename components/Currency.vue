@@ -8,9 +8,11 @@ interface CurrencyProps {
   value?: string | number;
 }
 
-const { value } = withDefaults(defineProps<CurrencyProps>(), {
+const props = withDefaults(defineProps<CurrencyProps>(), {
   value: 0,
 });
+
+const { value } = toRefs(props);
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Toaster } from "@/components/ui/sonner";
+import Toaster from "@/components/ui/toast/Toaster.vue";
 </script>
 <template>
   <NuxtLoadingIndicator color="#163858" />

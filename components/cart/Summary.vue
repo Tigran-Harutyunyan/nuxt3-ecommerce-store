@@ -1,55 +1,52 @@
 <script setup lang="ts">
-import { useAuth } from "vue-clerk";
-import { toast } from "vue-sonner";
+import { useToast } from "@/components/ui/toast/use-toast";
 import Currency from "@/components/Currency.vue";
 import { Button } from "@/components/ui/button";
 
+const { toast } = useToast();
+
 import { useCart } from "@/store/cart";
 
-const { items } = storeToRefs(useCart());
+const { items, totalPrice } = storeToRefs(useCart());
 
 const { removeAll } = useCart();
 
-const { userId } = useAuth();
-
-const totalPrice = computed(() => {
-  if (!items.value) return 0;
-  return items.value.reduce((total, item) => {
-    return total + Number(item.price);
-  }, 0);
-});
+const loading = ref(false);
 
 const onCheckout = async () => {
-  if (!userId.value) {
-    toast.info("Please sign in first");
-    navigateTo("/sign-in");
-  }
+  loading.value = true;
 
-  const response = $fetch("/api/checkout", {
+  const response = await $fetch("/api/checkout", {
     method: "post",
     body: {
       productIds: items.value.map((item) => item.id),
     },
   });
 
-  if (response?.data) {
-    window.location = response.data.url;
+  if (response?.url) {
+    window.location = response.url;
   }
 };
 
-watch(
-  () => useRoute().fullPath,
-  () => {
-    if (useRoute().query.success) {
-      toast.success("Payment completed.");
-      removeAll();
-    }
+onMounted(() => {
+  const query = useRoute().query;
 
-    if (useRoute().query.canceled) {
-      toast.error("Something went wrong.");
-    }
+  if (query.success) {
+    toast({
+      title: "Payment completed",
+      variant: "default",
+    });
+
+    removeAll();
   }
-);
+
+  if (query.canceled) {
+    toast({
+      title: "Something went wrong.",
+      variant: "destructive",
+    });
+  }
+});
 </script>
 
 <template>
@@ -71,7 +68,7 @@ watch(
         :disabled="items.length === 0"
         class="w-full mt-6"
       >
-        Checkout
+        {{ loading ? "Redirecting..." : "Checkout" }}
       </Button>
     </div>
   </ClientOnly>

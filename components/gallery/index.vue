@@ -26,7 +26,7 @@ const { images } = defineProps<GalleryProps>();
             fill
             :src="image.url"
             alt="Image"
-            class="object-cover object-center"
+            class="lg:object-contain lg:object-left lg:h-full"
           />
         </div>
       </TabPanel>

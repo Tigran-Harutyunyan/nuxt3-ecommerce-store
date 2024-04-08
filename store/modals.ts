@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 export type ModalType = "preview";
+import type { Product } from "@/types";
 
 export const useModals = defineStore("modals", () => {
   const type = ref<ModalType | null>(null);

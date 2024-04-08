@@ -12,7 +12,7 @@ interface MobileFiltersProps {
   colors: Color[] | null;
 }
 const { sizes, colors } = defineProps<MobileFiltersProps>();
-const isOpen = ref(true);
+const isOpen = ref(false);
 
 const closeModal = () => {
   isOpen.value = false;
@@ -48,8 +48,18 @@ const openModal = () => {
         </div>
 
         <div class="p-4">
-          <Filter valueKey="sizeId" name="Sizes" :data="sizes" />
-          <Filter valueKey="colorId" name="Colors" :data="colors" />
+          <Filter
+            valueKey="sizeId"
+            name="Sizes"
+            :data="sizes"
+            @close="closeModal"
+          />
+          <Filter
+            valueKey="colorId"
+            name="Colors"
+            :data="colors"
+            @close="closeModal"
+          />
         </div>
       </DialogPanel>
     </div>

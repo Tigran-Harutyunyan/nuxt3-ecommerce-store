@@ -8,6 +8,13 @@ const { data: product } = useFetch<Product>(
     server: true,
   }
 );
+
+const { data: relatedProducts } = useFetch<Product[]>(
+  `/api/product/${route.params.productId}/related`,
+  {
+    server: true,
+  }
+);
 </script>
 
 <template>
@@ -21,7 +28,7 @@ const { data: product } = useFetch<Product>(
           </div>
         </div>
         <hr class="my-10" />
-        <!-- <ProductList title="Related Items" :items="suggestedProducts" /> -->
+        <ProductList title="Related Items" :items="relatedProducts" />
       </div>
     </Container>
   </div>

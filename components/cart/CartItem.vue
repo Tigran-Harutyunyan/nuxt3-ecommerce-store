@@ -7,13 +7,14 @@ import Currency from "@/components/Currency.vue";
 import { type Product } from "@/types";
 import { useCart } from "@/store/cart";
 
-const cart = useCart();
+const { removeItem } = useCart();
 
 interface CartItemProps {
   data: Product;
 }
 
-const { data } = defineProps<CartItemProps>();
+const props = defineProps<CartItemProps>();
+const { data } = toRefs(props);
 </script>
 
 <template>
@@ -23,12 +24,12 @@ const { data } = defineProps<CartItemProps>();
         fill
         :src="data.images[0].url"
         alt=""
-        class="object-cover object-center"
+        class="object-cover object-center h-full"
       />
     </div>
     <div class="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
       <div class="absolute z-10 right-0 top-0">
-        <IconButton @click="cart.removeItem(data.id)">
+        <IconButton @click="removeItem(data.id)">
           <X :size="15" />
         </IconButton>
       </div>

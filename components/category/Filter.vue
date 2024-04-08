@@ -10,6 +10,8 @@ interface FilterProps {
   valueKey: string;
 }
 
+const emit = defineEmits(["close"]);
+
 const router = useRouter();
 
 const { data, name, valueKey } = defineProps<FilterProps>();
@@ -46,6 +48,8 @@ const onClick = (id: string) => {
 
     url += items.join("&");
   }
+
+  emit("close"); // for mobile
 
   router.push(url);
 };

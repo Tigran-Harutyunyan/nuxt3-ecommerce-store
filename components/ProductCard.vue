@@ -33,7 +33,7 @@ const handleClick = () => {
         :src="data.images?.[0]?.url"
         alt=""
         fill
-        class="aspect-square object-cover rounded-md mx-auto"
+        class="max-h-[250px] md-max-h-[auto] object-cover rounded-md mx-auto"
       />
       <div
         class="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5"
@@ -51,7 +51,7 @@ const handleClick = () => {
     </div>
 
     <div>
-      <p class="font-semibold text-lg">{{ data.name }}</p>
+      <p class="font-semibold">{{ data.name }}</p>
       <p class="text-sm text-gray-500">{{ data.category?.name }}</p>
     </div>
 

@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const url = `${getPath()}/site/products/${params.productId}`;
+        const url = `${getPath()}/site/product/${params.productId}/related`;
         return $fetch(url);
 
     } catch (error) {

@@ -25,7 +25,7 @@ const { image } = defineProps<GalleryTabProps>();
           fill
           :src="image.url"
           alt=""
-          class="object-cover object-center"
+          class="object-contain h-full object-center mx-auto"
         />
       </span>
       <span

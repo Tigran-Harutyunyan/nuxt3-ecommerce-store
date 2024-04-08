@@ -25,16 +25,11 @@ export default defineNuxtConfig({
     componentDir: './components/ui'
   },
   build: {
-    transpile: ['vue-clerk', '@clerk/clerk-js', "@nuxt/image", '@pinia/nuxt'],
+    transpile: ["@nuxt/image", '@pinia/nuxt'],
   },
   runtimeConfig: {
-    public: {
-      clerkPublishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    },
-    clerkSecretKey: process.env.CLERK_SECRET_KEY,
     storeId: process.env.STORE_ID,
     apiUrl: process.env.API_URL
-
   },
   googleFonts: {
     subsets: 'latin',
