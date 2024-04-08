@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import { ShoppingBag } from "lucide-vue-next";
+
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/store/cart";
+
+const cart = useCart();
+const router = useRouter();
+</script>
+
+<template>
+  <div class="ml-auto flex items-center gap-x-4">
+    <Button
+      @click="router.push('/cart')"
+      class="flex items-center rounded-full bg-black px-4 py-2"
+    >
+      <ShoppingBag :size="20" color="white" />
+      <span class="ml-2 text-sm font-medium text-white">
+        {{ cart.items.length }}
+      </span>
+    </Button>
+  </div>
+</template>
