@@ -1,7 +1,17 @@
+import { tryResolveModule } from "nuxt/kit";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxtjs/google-fonts', '@pinia/nuxt', '@nuxt/image', 'nuxt-headlessui'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
+    '@nuxtjs/google-fonts',
+    '@pinia/nuxt',
+    '@nuxt/image',
+    'nuxt-headlessui',
+    '@pinia-plugin-persistedstate/nuxt'
+  ],
 
   shadcn: {
     /**
@@ -37,4 +47,4 @@ export default defineNuxtConfig({
   image: {
 
   }
-})  
+})
