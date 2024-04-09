@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { Product } from "@/types";
+import ProductLoader from "@/components/loaders/ProductLoader.vue";
 const route = useRoute();
 
-const { data: product } = useFetch<Product>(
+const { data: product, pending } = useFetch<Product>(
   `/api/product/${route.params.productId}`,
   {
     server: true,
@@ -19,6 +20,7 @@ const { data: relatedProducts } = useFetch<Product[]>(
 
 <template>
   <div class="bg-white">
+    <ProductLoader v-if="pending && !product" />
     <Container>
       <div class="px-4 py-10 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">

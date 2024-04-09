@@ -2,6 +2,7 @@
 import type { Product, Category, Size, Color } from "@/types";
 import Filter from "@/components/category/Filter.vue";
 import MobileFilters from "@/components/category/MobileFilters.vue";
+import CategoryLoader from "@/components/loaders/CategoryLoader.vue";
 
 const routeParams = useRoute().params;
 
@@ -29,7 +30,11 @@ const { data: category } = useFetch<Category>(
   }
 );
 
-const { data: products, refresh } = await useAsyncData<Product[]>(
+const {
+  data: products,
+  refresh,
+  pending,
+} = await useAsyncData<Product[]>(
   "products",
   () =>
     $fetch("/api/products", {
@@ -47,6 +52,7 @@ watch(
 </script>
 
 <template>
+  <CategoryLoader v-if="pending && !products" />
   <div class="bg-white">
     <Container>
       <Billboard :data="category?.billboard" />

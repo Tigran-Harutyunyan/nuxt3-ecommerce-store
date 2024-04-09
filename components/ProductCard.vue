@@ -28,7 +28,7 @@ const handleClick = () => {
     @click="handleClick"
     class="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
   >
-    <div class="aspect-square rounded-xl relative">
+    <div class="aspect-square rounded-xl relative group-hover:opacity-75">
       <NuxtImg
         :src="data.images?.[0]?.url"
         alt=""
@@ -51,7 +51,7 @@ const handleClick = () => {
     </div>
 
     <div>
-      <p class="font-semibold">{{ data.name }}</p>
+      <p class="font-semibold line-clamp-2">{{ data.name }}</p>
       <p class="text-sm text-gray-500">{{ data.category?.name }}</p>
     </div>
 
