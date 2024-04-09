@@ -15,11 +15,11 @@ const queryParams = computed(() => {
   };
 });
 
-const { data: sizes } = useFetch<Size[]>("/api/size", {
+const { data: sizes } = useFetch<Size[]>("/api/sizes", {
   server: true,
 });
 
-const { data: colors } = useFetch<Color[]>("/api/color", {
+const { data: colors } = useFetch<Color[]>("/api/colors", {
   server: true,
 });
 
