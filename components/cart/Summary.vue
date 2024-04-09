@@ -33,11 +33,13 @@ onMounted(() => {
 
   if (query.success) {
     toast({
-      title: "Payment completed",
+      title: "Payment completed!",
       variant: "default",
     });
 
     removeAll();
+
+    navigateTo("/");
   }
 
   if (query.canceled) {
