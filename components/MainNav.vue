@@ -33,7 +33,7 @@ const routes = computed(() => {
       :class="
         cn(
           'text-sm font-medium transition-colors hover:text-black',
-          route.active ? 'text-black' : 'text-neutral-500'
+          route.active ? 'text-black text-bold' : 'text-neutral-500'
         )
       "
     >

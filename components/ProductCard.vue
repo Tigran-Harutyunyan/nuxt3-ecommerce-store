@@ -28,12 +28,14 @@ const handleClick = () => {
     @click="handleClick"
     class="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
   >
-    <div class="aspect-square rounded-xl relative group-hover:opacity-75">
+    <div
+      class="flex items-center aspect-square rounded-xl relative group-hover:opacity-75"
+    >
       <NuxtImg
         :src="data.images?.[0]?.url"
         alt=""
         fill
-        class="max-h-[250px] md-max-h-[auto] object-cover rounded-md mx-auto"
+        class="max-h-[250px] md:max-h-[auto] object-cover rounded-md mx-auto"
       />
       <div
         class="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5"
