@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/image',
     'nuxt-headlessui',
-    '@pinia-plugin-persistedstate/nuxt'
+    '@pinia-plugin-persistedstate/nuxt',
+    "nuxt-delay-hydration"
   ],
 
   shadcn: {

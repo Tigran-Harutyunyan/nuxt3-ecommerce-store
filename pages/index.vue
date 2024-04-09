@@ -15,7 +15,7 @@ const { data: products, pending } = useFetch<Product[]>(
 
 const billboard = computed(() => {
   if (billboards.value && Array.isArray(billboards.value)) {
-    return billboards.value[0];
+    return billboards.value[1];
   }
   return {};
 });
